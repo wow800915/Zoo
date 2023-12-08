@@ -70,4 +70,12 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.5")
 //BottonNavigation及BottomNavigation
     implementation("androidx.compose.material:material:1.3.1")
+// Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+// Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+// Log interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 }

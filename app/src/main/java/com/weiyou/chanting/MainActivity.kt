@@ -19,16 +19,21 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.weiyou.chanting.ui.theme.ChantingTheme
 import androidx.navigation.compose.rememberNavController
+import com.weiyou.chanting.data.network.NetworkManager
+import com.weiyou.chanting.data.network.RemoteDataSource
+import com.weiyou.chanting.data.repository.HomeRepository
 import com.weiyou.chanting.ui.accounts.AccountsScreen
 import com.weiyou.chanting.ui.home.HomeScreen
+import com.weiyou.chanting.ui.home.HomeViewModel
+import com.weiyou.chanting.utils.createFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +60,8 @@ fun ChantingApp(){
 @Composable
 fun SetNavigation(){
     val navController = rememberNavController()
+    // 使用 LocalContext 取得當前的 Context
+    val context = LocalContext.current
 
     Scaffold(
         bottomBar = {
@@ -95,7 +102,13 @@ fun SetNavigation(){
                 navController = navController,
                 startDestination = "homeScreen"
             ) {
-                composable("homeScreen") { HomeScreen(navController) }
+                val remoteDataSource = RemoteDataSource(NetworkManager)
+                val homeRepository = HomeRepository(remoteDataSource)
+                val homeViewModel = ViewModelProvider(
+                    context as ViewModelStoreOwner, HomeViewModel(homeRepository).createFactory()
+                )[HomeViewModel::class.java]
+
+                composable("homeScreen") { HomeScreen(homeViewModel,navController) }
                 composable("accountsScreen") { AccountsScreen(navController) }
             }
         }
