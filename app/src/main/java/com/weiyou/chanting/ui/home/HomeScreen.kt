@@ -4,17 +4,24 @@ package com.weiyou.chanting.ui.home
 import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -26,8 +33,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.weiyou.chanting.R
+import com.weiyou.chanting.data.models.AninalList
 import com.weiyou.chanting.data.models.NetworkResult
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun HomeScreen(homeViewModel: HomeViewModel, navController: NavController) {
 
@@ -37,38 +46,63 @@ internal fun HomeScreen(homeViewModel: HomeViewModel, navController: NavControll
         homeViewModel.getAninalList()
     }
 
-    val aninalList by homeViewModel.aninalList.collectAsState()
+    val aninalListResult by homeViewModel.aninalListResult.collectAsState()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-        LazyColumn {
-            when (aninalList) {
-                is NetworkResult.Success<*> -> {
-                    Log.d("IANIAN", "HomeScreen: Success")
-                    // Render your list items here based on the successful data
-                    items(50) { index ->
-                        SampleItem(index)
+        Column {
+            TopAppBar(
+                title = {
+                    Text(text = "Your Title")
+                },
+                navigationIcon = {
+                    // Back arrow button
+                    IconToggleButton(checked = false, onCheckedChange = {}) {
+                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
                     }
-                }
-                is NetworkResult.Loading -> {
-                    Log.d("IANIAN", "HomeScreen: Loading")
-                    // Optionally, show a loading indicator
-                    item {
-                        // Your loading indicator UI here
-                        Text(text = "Loading...")
+                },
+                actions = {
+                    // You can add additional actions if needed
+                },
+                modifier = Modifier.fillMaxWidth()
+            )
+
+
+            LazyColumn {
+                when (aninalListResult) {
+                    is NetworkResult.Success -> {
+                        Log.d("IANIAN", "HomeScreen76 Success:"+ (aninalListResult as NetworkResult.Success<AninalList>).data?.result?.results)
+                        // Render your list items here based on the successful data
+                        items(50) { index ->
+                            SampleItem(index)
+                        }
                     }
-                }
-                is NetworkResult.Error -> {
-                    Log.d("IANIAN", "HomeScreen: Error")
-                    // Optionally, show an error dialog or handle error UI
-                    item {
-                        ErrorAlertDialog((aninalList as NetworkResult.Error).error?.message ?: "Unknown error")
+
+                    is NetworkResult.Loading -> {
+                        Log.d("IANIAN", "HomeScreen: Loading")
+                        // Optionally, show a loading indicator
+                        item {
+                            // Your loading indicator UI here
+                            Text(text = "Loading...")
+                        }
                     }
-                }
-                else -> {
-                    // Handle other cases if needed
+
+                    is NetworkResult.Error -> {
+                        Log.d("IANIAN", "HomeScreen: Error")
+                        // Optionally, show an error dialog or handle error UI
+                        item {
+                            ErrorAlertDialog(
+                                (aninalListResult as NetworkResult.Error).error?.message
+                                    ?: "Unknown error"
+                            )
+                        }
+                    }
+
+                    else -> {
+                        // Handle other cases if needed
+                    }
                 }
             }
         }

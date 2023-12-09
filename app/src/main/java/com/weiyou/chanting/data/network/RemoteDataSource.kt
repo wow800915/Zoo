@@ -6,7 +6,7 @@ import com.weiyou.chanting.data.models.ErrorResponse
 import com.weiyou.chanting.data.models.NetworkResult
 import retrofit2.Response
 
-open class RemoteDataSource(private val networkManager: NetworkManager?) {
+internal class RemoteDataSource(private val networkManager: NetworkManager?) {
 
     suspend fun <T> getResponse(request: suspend () -> Response<T>): NetworkResult<T> {
         return try {
@@ -27,7 +27,7 @@ open class RemoteDataSource(private val networkManager: NetworkManager?) {
 
     suspend fun getAninalList(): NetworkResult<AninalList> {
         val aninalListApi = networkManager?.create(ApiService::class.java)
-        return getResponse(request = { aninalListApi!!.getData() })
+        return getResponse(request = { aninalListApi!!.getAninalList() })
     }
 
 }
