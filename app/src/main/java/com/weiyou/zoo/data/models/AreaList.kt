@@ -20,35 +20,35 @@ class AreaList {
         val sort: String? = null
 
         @SerializedName("results")
-        val results: List<Exhibit>? = null
+        val results: List<Area>? = null
     }
 
-    class Exhibit {
+    class Area {
         @SerializedName("_id")
-        val id = 0
+        val _id = 0
 
-        @SerializedName("E_no")
-        val exhibitNo: String? = null
+        @SerializedName("e_no")
+        val e_no: String? = null
 
-        @SerializedName("E_Category")
-        val category: String? = null
+        @SerializedName("e_category")
+        val e_category: String? = null
 
-        @SerializedName("E_Name")
-        val name: String? = null
+        @SerializedName("e_name")
+        val e_name: String? = null
 
-        @SerializedName("E_Pic_URL")
-        val picUrl: String? = null
+        @SerializedName("e_pic_url")
+        val e_pic_url: String? = null
 
-        @SerializedName("E_Info")
-        val info: String? = null
+        @SerializedName("e_info")
+        val e_info: String? = null
 
-        @SerializedName("E_Memo")
-        val memo: String? = null
+        @SerializedName("e_memo")
+        val e_memo: String? = null
 
-        @SerializedName("E_Geo")
-        val geo: String? = null
+        @SerializedName("e_geo")
+        val e_geo: String? = null
 
-        @SerializedName("E_URL")
-        val url: String? = null
+        @SerializedName("e_url")
+        val e_url: String? = null
     }
 }

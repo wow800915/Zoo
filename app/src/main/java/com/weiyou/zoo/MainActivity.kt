@@ -31,6 +31,7 @@ import com.weiyou.zoo.data.network.NetworkManager
 import com.weiyou.zoo.data.network.RemoteDataSource
 import com.weiyou.zoo.data.repository.HomeRepository
 import com.weiyou.zoo.ui.accounts.AccountsScreen
+import com.weiyou.zoo.ui.home.AreaDetailScreen
 import com.weiyou.zoo.ui.home.HomeScreen
 import com.weiyou.zoo.ui.home.HomeViewModel
 import com.weiyou.zoo.utils.createFactory
@@ -65,18 +66,20 @@ fun SetNavigation(){
 
     Scaffold(
         bottomBar = {
-            BottomNavigation {
+            BottomNavigation(
+                backgroundColor = MaterialTheme.colorScheme.primary, // 设置背景颜色
+            ) {
                 BottomNavigationItem(
-                    selected = navController.currentDestination?.route == "homeScreen",
-                    onClick = {
-                        navController.navigate("homeScreen") {
-                            launchSingleTop = true
-                            restoreState = true
-                        }
-                    },
-                    icon = { Icon(imageVector = Icons.Default.Home, contentDescription = "Home") },
-                    label = { Text("Home") }
-                )
+                selected = navController.currentDestination?.route == "homeScreen",
+                onClick = {
+                    navController.navigate("homeScreen") {
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                },
+                icon = { Icon(imageVector = Icons.Default.Home, contentDescription = "Home") },
+                label = { Text("Home") }
+            )
 
                 BottomNavigationItem(
                     selected = navController.currentDestination?.route == "accountsScreen",
@@ -110,6 +113,11 @@ fun SetNavigation(){
 
                 composable("homeScreen") { HomeScreen(homeViewModel,navController) }
                 composable("accountsScreen") { AccountsScreen(navController) }
+                composable("areaDetail/{areaId}") { backStackEntry ->
+                    // Extract areaId from the route
+                    val areaId = backStackEntry.arguments?.getString("areaId")
+                    AreaDetailScreen(areaId = areaId ?: "")
+                }
             }
         }
     }
