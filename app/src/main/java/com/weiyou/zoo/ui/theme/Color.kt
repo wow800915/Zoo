@@ -1,4 +1,4 @@
-package com.weiyou.chanting.ui.theme
+package com.weiyou.zoo.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

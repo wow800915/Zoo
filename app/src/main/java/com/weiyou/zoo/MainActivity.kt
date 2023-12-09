@@ -1,4 +1,4 @@
-package com.weiyou.chanting
+package com.weiyou.zoo
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -25,15 +25,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.weiyou.chanting.ui.theme.ChantingTheme
+import com.weiyou.zoo.ui.theme.ChantingTheme
 import androidx.navigation.compose.rememberNavController
-import com.weiyou.chanting.data.network.NetworkManager
-import com.weiyou.chanting.data.network.RemoteDataSource
-import com.weiyou.chanting.data.repository.HomeRepository
-import com.weiyou.chanting.ui.accounts.AccountsScreen
-import com.weiyou.chanting.ui.home.HomeScreen
-import com.weiyou.chanting.ui.home.HomeViewModel
-import com.weiyou.chanting.utils.createFactory
+import com.weiyou.zoo.data.network.NetworkManager
+import com.weiyou.zoo.data.network.RemoteDataSource
+import com.weiyou.zoo.data.repository.HomeRepository
+import com.weiyou.zoo.ui.accounts.AccountsScreen
+import com.weiyou.zoo.ui.home.HomeScreen
+import com.weiyou.zoo.ui.home.HomeViewModel
+import com.weiyou.zoo.utils.createFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

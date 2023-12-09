@@ -1,9 +1,9 @@
-package com.weiyou.chanting.data.network
+package com.weiyou.zoo.data.network
 
 import android.util.Log
-import com.weiyou.chanting.data.models.AninalList
-import com.weiyou.chanting.data.models.ErrorResponse
-import com.weiyou.chanting.data.models.NetworkResult
+import com.weiyou.zoo.data.models.AreaList
+import com.weiyou.zoo.data.models.ErrorResponse
+import com.weiyou.zoo.data.models.NetworkResult
 import retrofit2.Response
 
 internal class RemoteDataSource(private val networkManager: NetworkManager?) {
@@ -25,9 +25,9 @@ internal class RemoteDataSource(private val networkManager: NetworkManager?) {
         }
     }
 
-    suspend fun getAninalList(): NetworkResult<AninalList> {
-        val aninalListApi = networkManager?.create(ApiService::class.java)
-        return getResponse(request = { aninalListApi!!.getAninalList() })
+    suspend fun getAreaList(): NetworkResult<AreaList> {
+        val areaListApi = networkManager?.create(ApiService::class.java)
+        return getResponse(request = { areaListApi!!.getAreaList() })
     }
 
 }

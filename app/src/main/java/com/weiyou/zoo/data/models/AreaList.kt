@@ -1,8 +1,8 @@
-package com.weiyou.chanting.data.models
+package com.weiyou.zoo.data.models
 
 import com.google.gson.annotations.SerializedName
 
-class AninalList {
+class AreaList {
     @SerializedName("result")
     val result: Result? = null
 

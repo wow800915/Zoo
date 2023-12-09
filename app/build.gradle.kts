@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.weiyou.chanting"
+    namespace = "com.weiyou.zoo"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.weiyou.chanting"
+        applicationId = "com.weiyou.zoo"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

@@ -1,4 +1,4 @@
-package com.weiyou.chanting.ui.accounts
+package com.weiyou.zoo.ui.accounts
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

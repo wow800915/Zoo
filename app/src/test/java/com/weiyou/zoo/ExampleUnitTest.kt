@@ -1,4 +1,4 @@
-package com.weiyou.chanting
+package com.weiyou.zoo
 
 import org.junit.Test
 

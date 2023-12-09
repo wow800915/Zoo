@@ -1,4 +1,4 @@
-package com.weiyou.chanting.utils
+package com.weiyou.zoo.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

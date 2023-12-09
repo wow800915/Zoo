@@ -1,4 +1,4 @@
-package com.weiyou.chanting.ui.home
+package com.weiyou.zoo.ui.home
 
 
 import android.util.Log
@@ -32,9 +32,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.weiyou.chanting.R
-import com.weiyou.chanting.data.models.AninalList
-import com.weiyou.chanting.data.models.NetworkResult
+import com.weiyou.zoo.R
+import com.weiyou.zoo.data.models.AreaList
+import com.weiyou.zoo.data.models.NetworkResult
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,10 +43,10 @@ internal fun HomeScreen(homeViewModel: HomeViewModel, navController: NavControll
     val TAG = "HomeScreen"
 
     LaunchedEffect(true) {
-        homeViewModel.getAninalList()
+        homeViewModel.getAreaList()
     }
 
-    val aninalListResult by homeViewModel.aninalListResult.collectAsState()
+    val areaListResult by homeViewModel.areaListResult.collectAsState()
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -71,9 +71,9 @@ internal fun HomeScreen(homeViewModel: HomeViewModel, navController: NavControll
 
 
             LazyColumn {
-                when (aninalListResult) {
+                when (areaListResult) {
                     is NetworkResult.Success -> {
-                        Log.d("IANIAN", "HomeScreen76 Success:"+ (aninalListResult as NetworkResult.Success<AninalList>).data?.result?.results)
+                        Log.d("IANIAN", "HomeScreen76 Success:"+ (areaListResult as NetworkResult.Success<AreaList>).data?.result?.results)
                         // Render your list items here based on the successful data
                         items(50) { index ->
                             SampleItem(index)
@@ -94,7 +94,7 @@ internal fun HomeScreen(homeViewModel: HomeViewModel, navController: NavControll
                         // Optionally, show an error dialog or handle error UI
                         item {
                             ErrorAlertDialog(
-                                (aninalListResult as NetworkResult.Error).error?.message
+                                (areaListResult as NetworkResult.Error).error?.message
                                     ?: "Unknown error"
                             )
                         }

@@ -1,4 +1,4 @@
-package com.weiyou.chanting.data.models
+package com.weiyou.zoo.data.models
 
 internal sealed class NetworkResult<out T> {
     object Loading : NetworkResult<Nothing>()

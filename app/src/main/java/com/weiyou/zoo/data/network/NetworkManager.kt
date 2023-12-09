@@ -1,7 +1,7 @@
-package com.weiyou.chanting.data.network
+package com.weiyou.zoo.data.network
 
 import com.google.gson.GsonBuilder
-import com.weiyou.chanting.utils.Constants.BASE_URL_TAIPEI
+import com.weiyou.zoo.utils.Constants.BASE_URL_TAIPEI
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

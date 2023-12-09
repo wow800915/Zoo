@@ -1,4 +1,4 @@
-package com.weiyou.chanting.data.models
+package com.weiyou.zoo.data.models
 
 data class ErrorResponse(
     val code: String? = null,
