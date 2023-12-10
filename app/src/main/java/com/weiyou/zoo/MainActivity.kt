@@ -113,10 +113,11 @@ fun SetNavigation(){
 
                 composable("homeScreen") { HomeScreen(homeViewModel,navController) }
                 composable("accountsScreen") { AccountsScreen(navController) }
+                //看一下下面的code,是表示直接在MainActivity就已經做好了嗎？
                 composable("areaDetail/{areaId}") { backStackEntry ->
                     // Extract areaId from the route
                     val areaId = backStackEntry.arguments?.getString("areaId")
-                    AreaDetailScreen(areaId = areaId ?: "")
+                    AreaDetailScreen(areaId = areaId ?: "",navController)
                 }
             }
         }

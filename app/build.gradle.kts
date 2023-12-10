@@ -78,4 +78,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 // Log interceptor
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+//  Was thinking about using glide ,but it is still in beta
+//    implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
+    implementation("io.coil-kt:coil-compose:2.5.0")
 }

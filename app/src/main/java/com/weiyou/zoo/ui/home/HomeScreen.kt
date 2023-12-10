@@ -38,6 +38,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
 import com.weiyou.zoo.R
 import com.weiyou.zoo.data.models.AreaList
 import com.weiyou.zoo.data.models.NetworkResult
@@ -63,12 +64,12 @@ internal fun HomeScreen(homeViewModel: HomeViewModel, navController: NavControll
                 title = {
                     Text(text = "Your Title")
                 },
-                navigationIcon = {
-                    // Back arrow button
-                    IconToggleButton(checked = false, onCheckedChange = {}) {
-                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
-                    }
-                },
+//                navigationIcon = {
+//                    // Back arrow button
+//                    IconToggleButton(checked = false, onCheckedChange = {}) {
+//                        Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+//                    }
+//                },
                 actions = {
                     // You can add additional actions if needed
                 },
@@ -140,6 +141,15 @@ fun SampleItem(area: AreaList.Area, onItemClick: () -> Unit) {
             .padding(16.dp)
             .clickable { onItemClick.invoke() } // Handle item click
     ) {
+//
+//        AsyncImage(
+//            model = area.e_pic_url,
+//            contentDescription = null,
+//            modifier = Modifier
+//                .size(48.dp) // Adjust the size as needed
+//                .padding(end = 8.dp), // Adjust the padding as needed
+//        )
+
         Image(
             painter = painterResource(id = R.drawable.ic_launcher_background),
             contentDescription = null, // Provide a meaningful content description
