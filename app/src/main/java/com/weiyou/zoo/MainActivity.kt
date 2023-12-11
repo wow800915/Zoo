@@ -70,16 +70,16 @@ fun SetNavigation(){
                 backgroundColor = MaterialTheme.colorScheme.primary, // 设置背景颜色
             ) {
                 BottomNavigationItem(
-                selected = navController.currentDestination?.route == "homeScreen",
-                onClick = {
-                    navController.navigate("homeScreen") {
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
-                icon = { Icon(imageVector = Icons.Default.Home, contentDescription = "Home") },
-                label = { Text("Home") }
-            )
+                    selected = navController.currentDestination?.route == "homeScreen",
+                    onClick = {
+                        navController.navigate("homeScreen") {
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
+                    icon = { Icon(imageVector = Icons.Default.Home, contentDescription = "Home") },
+                    label = { Text("Home") }
+                )
 
                 BottomNavigationItem(
                     selected = navController.currentDestination?.route == "accountsScreen",
@@ -105,12 +105,7 @@ fun SetNavigation(){
                 navController = navController,
                 startDestination = "homeScreen"
             ) {
-                val remoteDataSource = RemoteDataSource(NetworkManager)
-                val homeRepository = HomeRepository(remoteDataSource)
-                val homeViewModel = ViewModelProvider(
-                    context as ViewModelStoreOwner, HomeViewModel(homeRepository).createFactory()
-                )[HomeViewModel::class.java]
-
+                val homeViewModel = createHomeViewModel( context as ViewModelStoreOwner)
                 composable("homeScreen") { HomeScreen(homeViewModel,navController) }
                 composable("accountsScreen") { AccountsScreen(navController) }
                 //看一下下面的code,是表示直接在MainActivity就已經做好了嗎？
@@ -122,6 +117,12 @@ fun SetNavigation(){
             }
         }
     }
+}
+
+private fun createHomeViewModel(context: ViewModelStoreOwner): HomeViewModel {
+    val remoteDataSource = RemoteDataSource(NetworkManager)
+    val homeRepository = HomeRepository(remoteDataSource)
+    return ViewModelProvider(context, HomeViewModel(homeRepository).createFactory())[HomeViewModel::class.java]
 }
 
 @Preview(showBackground = true)

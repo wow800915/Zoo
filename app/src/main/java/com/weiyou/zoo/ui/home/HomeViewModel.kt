@@ -1,5 +1,7 @@
 package com.weiyou.zoo.ui.home
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.weiyou.zoo.data.models.AreaList
@@ -14,8 +16,8 @@ import kotlinx.coroutines.launch
 
 internal class HomeViewModel(private val homeRepository: HomeRepository) : ViewModel() {
 
-    private val _areaListResult = MutableStateFlow<NetworkResult<AreaList>?>(null)
-    val areaListResult: StateFlow<NetworkResult<AreaList>?> get() = _areaListResult.asStateFlow()
+    private val _areaListResult = MutableLiveData<NetworkResult<AreaList>?>(null)
+    val areaListResult: LiveData<NetworkResult<AreaList>?> get() = _areaListResult
 
     fun getAreaList() {
         viewModelScope.launch {

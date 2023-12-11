@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Zoo</string>
+    <string name="Back_to_HomeScreen">Go back to HomeScreen</string>
+    <string name="AreaDetailScreen">AreaDetailScreen</string>
+    <string name="HomeScreen">HomeScreen</string>
+    <string name="Back">Back</string>
+    <string name="Unknown_error">Unknown error</string>
+    <string name="Error">Error</string>
+    <string name="error_message">An error occurred: %s</string>
+    <string name="AlertDialog_dismissed">AlertDialog dismissed</string>
+    <string name="Dismiss">Dismiss</string>
+
 </resources>
