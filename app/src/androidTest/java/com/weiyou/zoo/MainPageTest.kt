@@ -26,7 +26,7 @@ class MainPageTest {
 
         // Check if the BottomNavigation is displayed
         composeTestRule.onNodeWithText("Home").assertIsDisplayed()
-        composeTestRule.onNodeWithTag("your_test_tag_for_lazy_column").assertExists()
+        composeTestRule.onNodeWithTag("test_tag_for_lazy_column").assertExists()
         composeTestRule.onNodeWithText("Accounts").assertIsDisplayed()
     }
 
@@ -56,7 +56,7 @@ class MainPageTest {
         composeTestRule.onNodeWithContentDescription("Home").performClick()
 
         composeTestRule.onNodeWithText("HomeScreen").assertExists()
-        composeTestRule.onNodeWithTag("your_test_tag_for_lazy_column").assertExists()
+        composeTestRule.onNodeWithTag("test_tag_for_lazy_column").assertExists()
     }
 
 }

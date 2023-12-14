@@ -119,6 +119,7 @@ fun SetNavigation(){
     }
 }
 
+//Notice:在 Compose 中，可以使用 viewModel 组合函数在 Activity 或 Fragment 中获取 ViewModel 的实例，而不必使用 LocalContext。这确保了 ViewModel 的生命周期与相关的 Activity 或 Fragment 保持一致。这对于确保正确的数据管理和避免内存泄漏非常重要。
 private fun createHomeViewModel(context: ViewModelStoreOwner): HomeViewModel {
     val remoteDataSource = RemoteDataSource(NetworkManager)
     val homeRepository = HomeRepository(remoteDataSource)
