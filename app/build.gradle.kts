@@ -83,4 +83,8 @@ dependencies {
 //  Was thinking about using glide ,but it is still in beta
 //    implementation("com.github.bumptech.glide:compose:1.0.0-beta01")
     implementation("io.coil-kt:coil-compose:2.5.0")
+//  UnitTest
+    testImplementation("org.mockito:mockito-inline:5.2.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:3.2.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
 }
