@@ -65,11 +65,10 @@ private fun HandleAreaListResult(areaListResult: Any?, navController: NavControl
     when (val result = areaListResult) {
         is NetworkResult.Success<*> -> {
             LazyColumn(
-                modifier = Modifier.testTag("test_tag_for_lazy_column")
-            ) {
+                modifier = Modifier.testTag("AreaList")
+            ){
                 Log.d(TAG, "=====GetAreaListAPI Success=====")
-                val areaList =
-                    (result as NetworkResult.Success<AreaList>).data?.result?.results.orEmpty()
+                val areaList = (result as NetworkResult.Success<AreaList>).data?.result?.results.orEmpty()
                 items(areaList) { area ->
                     AreaItem(area) {
                         navController.navigate("areaDetail/${area._id}")

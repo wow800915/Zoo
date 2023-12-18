@@ -7,6 +7,8 @@ import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,23 +20,31 @@ class MainPageTest {
     val composeTestRule = createComposeRule()
 
     @Test
-    fun chantingApp_displaysBottomNavigation() {
-        // Launch the ChantingApp composable
+    fun zooApp_displaysBottomNavigation() {
+        // Launch the ZooApp composable
         composeTestRule.setContent {
-            ChantingApp()
+            ZooApp()
         }
 
         // Check if the BottomNavigation is displayed
         composeTestRule.onNodeWithText("Home").assertIsDisplayed()
-        composeTestRule.onNodeWithTag("test_tag_for_lazy_column").assertExists()
+        composeTestRule.onNodeWithTag("Loading").assertExists()
         composeTestRule.onNodeWithText("Accounts").assertIsDisplayed()
+
+        composeTestRule.runOnIdle {
+            runBlocking {
+                delay(3000)
+            }
+        }
+
+        composeTestRule.onNodeWithTag("AreaList").assertExists()
     }
 
     // Add more tests as needed for specific functionality
     @Test
     fun clickAccounts_NavigateToAccountsScreen() {
         composeTestRule.setContent {
-            ChantingApp()
+            ZooApp()
         }
 
         // Click on the "Accounts" BottomNavigationItem
@@ -50,13 +60,21 @@ class MainPageTest {
     fun clickHome_NavigateToHomeScreen() {
         // Launch the ChantingApp composable
         composeTestRule.setContent {
-            ChantingApp()
+            ZooApp()
         }
 
         composeTestRule.onNodeWithContentDescription("Home").performClick()
 
+        composeTestRule.onNodeWithTag("Loading").assertExists()
         composeTestRule.onNodeWithText("HomeScreen").assertExists()
-        composeTestRule.onNodeWithTag("test_tag_for_lazy_column").assertExists()
+
+        composeTestRule.runOnIdle {
+            runBlocking {
+                delay(3000)
+            }
+        }
+
+        composeTestRule.onNodeWithTag("AreaList").assertExists()
     }
 
 }

@@ -25,7 +25,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.weiyou.zoo.ui.theme.ChantingTheme
+import com.weiyou.zoo.ui.theme.ZooTheme
 import androidx.navigation.compose.rememberNavController
 import com.weiyou.zoo.data.network.NetworkManager
 import com.weiyou.zoo.data.network.RemoteDataSource
@@ -40,14 +40,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ChantingApp()
+            ZooApp()
         }
     }
 }
 
 @Composable
-fun ChantingApp(){
-    ChantingTheme {
+fun ZooApp(){
+    ZooTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
             color = MaterialTheme.colorScheme.background
@@ -128,6 +128,6 @@ private fun createHomeViewModel(context: ViewModelStoreOwner): HomeViewModel {
 
 @Preview(showBackground = true)
 @Composable
-fun ChantingAppPreview() {
-    ChantingApp()
+fun ZooAppPreview() {
+    ZooApp()
 }
