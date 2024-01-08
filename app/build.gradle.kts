@@ -46,6 +46,7 @@ android {
 
         debug {
             firebaseAppDistribution {
+                appId = "1:748942500139:android:06482e92797823806c656e"
                 releaseNotes = "測試appdistribution "
                 testers = "wow800915@gmail.com"
             }
