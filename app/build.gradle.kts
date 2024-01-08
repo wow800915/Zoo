@@ -1,6 +1,11 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    // Add the Google services Gradle plugin
+    // 目前這邊是給Firebase的自動發布部署20240108
+    id("com.google.gms.google-services")
+    // Add the App Distribution Gradle plugin
+    id("com.google.firebase.appdistribution")
 }
 
 android {
@@ -11,7 +16,7 @@ android {
         applicationId = "com.weiyou.zoo"
         minSdk = 24
         targetSdk = 34
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -27,6 +32,23 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+//            firebaseAppDistribution {
+//                releaseNotes = "更新了 xxx 功能 "
+//                testers = "a@example.com, b@example.com, c@example.com"
+//            }
+//
+//            firebaseAppDistribution {
+//                releaseNotes=" 更新了 xxx 功能 "
+//                groups="qa-team"
+//            }
+        }
+
+        debug {
+            firebaseAppDistribution {
+                releaseNotes = "測試appdistribution "
+                testers = "wow800915@gmail.com"
+            }
         }
     }
     compileOptions {
@@ -89,4 +111,11 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0")
 
     testImplementation("androidx.arch.core:core-testing:2.1.0")
+
+// 目前這邊是給Firebase的自動發布部署20240108
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    // TODO: Add the dependencies for Firebase products you want to use
+    // When using the BoM, don't specify versions in Firebase dependencies
+    implementation("com.google.firebase:firebase-analytics")
 }

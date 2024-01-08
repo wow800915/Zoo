@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "748942500139",
+    "project_id": "taipeizoo-936e4",
+    "storage_bucket": "taipeizoo-936e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748942500139:android:06482e92797823806c656e",
+        "android_client_info": {
+          "package_name": "com.weiyou.zoo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZueDMXTfyqdn4gd1fIhFYtJ_A0eIrPYc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
