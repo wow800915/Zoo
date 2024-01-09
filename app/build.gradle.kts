@@ -33,15 +33,12 @@ android {
                 "proguard-rules.pro"
             )
 
-//            firebaseAppDistribution {
-//                releaseNotes = "更新了 xxx 功能 "
-//                testers = "a@example.com, b@example.com, c@example.com"
-//            }
-//
-//            firebaseAppDistribution {
-//                releaseNotes=" 更新了 xxx 功能 "
-//                groups="qa-team"
-//            }
+            firebaseAppDistribution {
+                appId = "1:748942500139:android:06482e92797823806c656e"
+                releaseNotes = "更新了 xxx 功能 "
+                testers = "a@example.com, b@example.com, c@example.com"
+            }
+
         }
 
         debug {
