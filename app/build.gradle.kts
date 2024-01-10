@@ -13,7 +13,7 @@ plugins {
 
 // Create a variable called keystorePropertiesFile, and initialize it to your
 // keystore.properties file, in the rootProject folder.
-val keystorePropertiesFile = rootProject.file("/Users/wei-you_chen/Downloads/aboutzoo/Keystore.properties")
+val keystorePropertiesFile = rootProject.file("/Users/wei-you_chen/.jenkins/workspace/PublishAPK/aboutzoo/Keystore.properties")
 
 // Initialize a new Properties() object called keystoreProperties.
 val keystoreProperties = Properties()
@@ -29,7 +29,7 @@ android {
         applicationId = "com.weiyou.zoo"
         minSdk = 24
         targetSdk = 34
-        versionCode = 2
+        versionCode = 4
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -57,8 +57,8 @@ android {
 
             firebaseAppDistribution {
                 appId = "1:748942500139:android:06482e92797823806c656e"
-                releaseNotes = "更新了 xxx 功能 "
-                testers = "a@example.com, b@example.com, c@example.com"
+                releaseNotes = "測試appdistribution "
+                testers = "wow800915@gmail.com"
             }
 
         }
