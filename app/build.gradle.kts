@@ -61,6 +61,7 @@ android {
                 testers = "wow800915@gmail.com"
             }
 
+            signingConfig = signingConfigs.getByName("config")
         }
 
         debug {
